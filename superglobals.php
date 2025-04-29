@@ -19,5 +19,13 @@ var_dump($_REQUEST);
 //var_dump($_SESSION);
 // $_GLOBALS é uma superglobal que contém todas as variáveis globais do script
 //var_dump($_GLOBALS);
+$message = "Hello from global!";
+function showMessage() {
+    // Acessa a variável global $message dentro da função
+    $GLOBALS['message'] = "Hello from global inside function!";
+    echo $GLOBALS['message']; // Acessa a variável global $message dentro da função
+}
+showMessage();
+// Com a $_GLOBALS podemos até modificar o valor das variáveis dentro da função
 echo '</pre>';
 ?>
