@@ -1,7 +1,6 @@
 <?php
 require_once 'classes/Account.php';
 require_once 'classes/SavingAccount.php';
-require_once 'classes/CheckingAccount.php';
 
 $savingAccount = new SavingAccount(1234, 5678, 15.50);
 
