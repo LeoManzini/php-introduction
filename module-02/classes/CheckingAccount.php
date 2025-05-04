@@ -1,6 +1,6 @@
 <?php
 // Diz que classe atual é filha da classe referenciada
-class CheckingAccount extends Account {
+final class CheckingAccount extends Account {
     private float $limit;
 
     public function __construct($agency, $account, $balance, $limit) {
@@ -20,5 +20,12 @@ class CheckingAccount extends Account {
         
         $this->setBalance($this->getBalance() - $amount);
     }
+
+    // public function deposit(float $amount) {
+    //     if ($amount < 0) {
+    //         throw new Exception("Can't deposit negative or zero");
+    //     }
+    //     $this->balance += $amount;
+    // }
 }
 ?>

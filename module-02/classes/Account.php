@@ -1,5 +1,9 @@
 <?php
-class Account {
+/**
+ * Classe marcada como abstrata, posso utilizar como classe pai, para criar filhos à partir dela
+ * mas não posso instanciar essa classe diretamente em scripts
+ *  */
+abstract class Account {
     private int $agency;
     private int $account;
     private float $balance;
@@ -31,12 +35,14 @@ class Account {
     }
 
     // Para classes mudarem o saldo fora das classes filhas, foi criado um método de depósito com regras e validações
-    public function deposit(float $amount) {
+    final public function deposit(float $amount) {
         if ($amount < 0) {
             throw new Exception("Can't deposit negative or zero");
         }
         $this->balance += $amount;
     }
+
+    abstract function withdraw(float $amount);
 
     public function __toString(): string {
         return "Agência: {$this->agency}, Nº da conta: {$this->account}";
