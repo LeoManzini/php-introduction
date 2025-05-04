@@ -4,14 +4,17 @@ class Product {
     // public, private, protected, não tem o padrão de acesso para quando não definido
     // podemos definir o tipo de dado da propriedade
     private string $name;
+    private int $quantity;
     private float $price;
+    private Manufacturer $manufacturer;
 
     // Construtor
     // O construtor é um método especial que é chamado quando um objeto é criado
-    public function __construct($name, $price) {
+    public function __construct($name, $quantity, $price) {
         // $this é uma referência ao objeto atual
         // O operador -> é usado para acessar propriedades e métodos de um objeto
         $this->name = $name;
+        $this->quantity = $quantity;
         $this->price = $price;
     }
 
@@ -31,16 +34,34 @@ class Product {
 
     // Métodos de acesso (getters e setters)
     // Encapsulamento é o conceito de esconder os detalhes internos de um objeto e expor apenas o que é necessário
-    public function getName() {
+    public function getName(): string {
         return $this->name;
     }
 
-    public function getPrice() {
+    public function getQuantity(): int {
+        return $this->quantity;
+    }
+
+    public function getPrice(): float {
         return $this->price;
+    }
+
+    public function getManufacturer(): Manufacturer {
+        return $this->manufacturer;
     }
 
     public function setName($name) {
         $this->name = $name;
+    }
+
+    public function setQuantity($quantity) {
+        if ($quantity < 0) {
+            throw new Exception("Quantity cannot be negative");
+        }
+        if (!is_numeric($quantity)) {
+            throw new Exception("Quantity must be a number");
+        }
+        $this->quantity = $quantity;
     }
 
     // Uma boa prática é validar os dados antes de atribuí-los a uma propriedade
@@ -54,6 +75,13 @@ class Product {
             throw new Exception("Price must be a number");
         }
         $this->price = $price;
+    }
+
+    public function setManufacturer($manufacturer) {
+        if (!($manufacturer instanceof Manufacturer)) {
+            throw new Exception("Manufacturer must be an instance of Manufacturer class");
+        }
+        $this->manufacturer = $manufacturer;
     }
 }
 ?>

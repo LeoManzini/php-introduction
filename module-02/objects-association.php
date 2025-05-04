@@ -1,10 +1,11 @@
 <?php
-include 'ManufacturerProduct.php';
-include 'Manufacturer.php';
+include 'classes/Manufacturer.php';
+include 'classes/Product.php';
 
 $manufacturer = new Manufacturer("Apple", "USA", "1234567890");
-// $product = new ManufacturerProduct("iPhone 14", 999.99, 10, new Manufacturer("Apple", "USA", "1234567890"));
-$product = new ManufacturerProduct("iPhone 14", 999.99, 10, $manufacturer);
+$product = new Product("iPhone 14", 10, 999.99);
+// $product->setManufacturer(new Manufacturer("Apple", "USA", "1234567890"));
+$product->setManufacturer($manufacturer);
 
 echo "<pre>";
 var_dump($product);
