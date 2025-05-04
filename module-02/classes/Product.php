@@ -7,6 +7,7 @@ class Product {
     private int $quantity;
     private float $price;
     private Manufacturer $manufacturer;
+    private array $features = [];
 
     // Construtor
     // O construtor é um método especial que é chamado quando um objeto é criado
@@ -50,6 +51,10 @@ class Product {
         return $this->manufacturer;
     }
 
+    public function getFeatures(): array {
+        return $this->features;
+    }
+
     public function setName($name) {
         $this->name = $name;
     }
@@ -82,6 +87,17 @@ class Product {
             throw new Exception("Manufacturer must be an instance of Manufacturer class");
         }
         $this->manufacturer = $manufacturer;
+    }
+
+    public function addFeature($name, $value) {
+        if (empty($name) || empty($value)) {
+            throw new Exception("Feature name and value cannot be empty");
+        }
+        if (!is_string($name) || !is_string($value)) {
+            throw new Exception("Feature name and value must be strings");
+        }
+        $feature = new Feature($name, $value);
+        $this->features[] = $feature;
     }
 }
 ?>
