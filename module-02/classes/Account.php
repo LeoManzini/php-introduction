@@ -37,5 +37,9 @@ class Account {
         }
         $this->balance += $amount;
     }
+
+    public function __toString(): string {
+        return "Agência: {$this->agency}, Nº da conta: {$this->account}";
+    }
 }
 ?>
