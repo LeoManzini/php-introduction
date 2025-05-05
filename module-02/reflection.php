@@ -64,7 +64,7 @@ $metodo = "sayHello";
 call_user_func([$classe, $metodo], "Leonardo");
 
 // Posso passar objeto aqui também, ao invés de só o nome da classe
-$pessoa = new Person();
-call_user_func([$pessoa, $metodo], "Leonardo");
+// $pessoa = new Person();
+// call_user_func([$pessoa, $metodo], "Leonardo");
 echo "</pre>";
 ?>
