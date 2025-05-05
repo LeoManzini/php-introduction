@@ -1,5 +1,5 @@
 <?php
-class Product {
+class Product implements BudgetableInterface {
     // Modificadores de acceso
     // public, private, protected, não tem o padrão de acesso para quando não definido
     // podemos definir o tipo de dado da propriedade
